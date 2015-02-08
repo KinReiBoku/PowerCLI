@@ -177,7 +177,7 @@ while(1){
             $x = Read-Host "Press any key to continue ..."
         }
         19 {
-            # VDSアップリンクポート接続済物理アダプタ削除
+            # ポートグループ取得
             $VDSwitch = Read-Host "Please enter VDSwitch name"
             Clear-Host
             Get-VDPortGroup -VDSwitch $VDSwitch | fl
