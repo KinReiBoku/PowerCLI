@@ -42,14 +42,14 @@ while(1){
         1 {
             # フォルダ取得
             Clear-Host
-            Get-Folder -NoRecursion
+            Get-Folder
             $x = Read-Host "Press any key to continue ..."
         }
         2 {
             # フォルダ作成
             Clear-Host
             $Folder = Read-Host "Please enter Folder name"
-            New-Folder -Name $Folder
+            $Object = Get-Folder -NoRecursion | New-Folder -Name $Folder
             $x = Read-Host "Press any key to continue ..."
         }
         3 {
@@ -94,7 +94,7 @@ while(1){
             $User = Read-Host "Please enter username"
             $Pass = Read-Host "Please enter password"
             $Datacenter = Read-Host "Please enter Datacenter name"
-            Add-VMHost $Ip -Location $Datacenter -User $User -Password $Pass
+            Add-VMHost $Ip -Location $Datacenter -User $User -Password $Pass -Force
             $x = Read-Host "Press any key to continue ..."
         }
         9 {
@@ -114,11 +114,11 @@ while(1){
         11 {
             # VDS作成
             $Datacenter = Read-Host "Please enter Datacenter name"
-            $VDSwitch = Read-Host "Please enter VDSwitch name"
+            $Vdswitch = Read-Host "Please enter VDSwitch name"
             $NumUplinkPorts = Read-Host "Please enter NumUplinkPorts"
             Clear-Host
-            Get-VMHostNetworkAdapter -VMHost $Datacenter
-            New-VDSwitch -Name $VDSwitch -Location $myDatacenter -NumUplinkPorts $NumUplinkPorts
+            $myDatacenter = Get-Datacenter -Name $Datacenter
+            New-VDSwitch -Name $Vdswitch -Location $myDatacenter -NumUplinkPorts $NumUplinkPorts
             $x = Read-Host "Press any key to continue ..."
         }
         12 {
