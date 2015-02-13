@@ -165,7 +165,7 @@ while(1){
             $Nic = Read-Host "Please enter VMHost NIC name"
             Clear-Host
             $vmhostNetworkAdapter = Get-VMHost $Ip | Get-VMHostNetworkAdapter -Physical -Name $Nic
-            Get-VDSwitch $VDSwitch | Add-VDSwitchPhysicalNetworkAdapter -VMHostNetworkAdapter $vmhostNetworkAdapter
+            Get-VDSwitch $VDSwitch | Add-VDSwitchPhysicalNetworkAdapter -VMHostNetworkAdapter $vmhostNetworkAdapter -Confirm:$False
             $x = Read-Host "Press any key to continue ..."
         }
         18 {
@@ -187,8 +187,9 @@ while(1){
             # ポートグループ作成
             $VDSwitch = Read-Host "Please enter VDSwitch name"
             $VDPortGroup = Read-Host "Please enter VDPortGroup name"
+            $VlanId = Read-Host "Please enter VlanId num"
             Clear-Host
-            Get-VDSwitch -Name $VDSwitch | New-VDPortgroup -Name $VDPortGroup
+            Get-VDSwitch -Name $VDSwitch | New-VDPortgroup -Name $VDPortGroup -VlanId $VlanId
             $x = Read-Host "Press any key to continue ..."
         }
         21 {
