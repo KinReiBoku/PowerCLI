@@ -1,5 +1,6 @@
 # PowerCLIスナップイン読込
 Add-PSSnapin VMware.VimAutomation.Core
+Add-PSSnapin VMware.VimAutomation.vds
 # バージョン表示
 Get-PowerCLIVersion
 
@@ -118,7 +119,7 @@ while(1){
             $NumUplinkPorts = Read-Host "Please enter NumUplinkPorts"
             Clear-Host
             $myDatacenter = Get-Datacenter -Name $Datacenter
-            New-VDSwitch -Name $Vdswitch -Location $myDatacenter -NumUplinkPorts $NumUplinkPorts
+            New-VDSwitch -Location $myDatacenter -Name $Vdswitch -NumUplinkPorts $NumUplinkPorts
             $x = Read-Host "Press any key to continue ..."
         }
         12 {
