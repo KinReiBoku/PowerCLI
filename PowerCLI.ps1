@@ -31,7 +31,7 @@ while(1){
     Write-Output '14:Add-VDSwitchVMHost'
     Write-Output '15:Remove-VDSwitchVMHost'
     Write-Output '16:Get-VMHostNetworkAdapter'
-    Write-Output '17:Add-VDSwitchPhysicalNetworkAdapte'
+    Write-Output '17:Add-VDSwitchPhysicalNetworkAdapter'
     Write-Output '18:Remove-VDSwitchPhysicalNetworkAdapter'
     Write-Output '19:Get-VDPortGroup'
     Write-Output '20:New-VDPortgroup'
@@ -156,7 +156,7 @@ while(1){
             # VDSアップリンクポート接続済物理アダプタ取得
             $Ip = Read-Host "Please enter VMHost name"
             Clear-Host
-            Get-VMHostNetworkAdapter -VMHost $Ip | ft -autosize
+            Get-VMHostNetworkAdapter -VMHost $Ip
             $x = Read-Host "Press any key to continue ..."
         }
         17 {
@@ -181,7 +181,7 @@ while(1){
             # ポートグループ取得
             $VDSwitch = Read-Host "Please enter VDSwitch name"
             Clear-Host
-            Get-VDPortGroup -VDSwitch $VDSwitch | fl
+            Get-VDPortGroup -VDSwitch $VDSwitch
             $x = Read-Host "Press any key to continue ..."
         }
         20 {
